@@ -20,6 +20,7 @@ defmodule Duper.Results do
   # Server
 
   def init(:no_args) do
+    IO.puts "starting the results"
     {:ok, %{}}
   end
 
@@ -43,7 +44,7 @@ defmodule Duper.Results do
 
   defp hashes_with_more_than_one_path(results) do
     results
-    |> Enum.filter(fn {_hash, files} -> files > 1 end)
+    |> Enum.filter(fn {_hash, files} -> length(files) > 1 end)
     |> Enum.map(&elem(&1, 1))
   end
 end
